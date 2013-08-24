@@ -10,8 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.lino.votenofilme.domain.model.movie.Movie;
 import br.com.lino.votenofilme.domain.model.user.User;
-import br.com.lino.votenofilme.domain.model.video.Video;
 
 @Entity
 @Table(name = "VOTE")
@@ -28,9 +28,9 @@ public class Vote {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "VIDEO_ID", nullable = false)
-	private Video video;
+	private Movie video;
 
-	public Vote(User user, Video video) {
+	public Vote(User user, Movie video) {
 		this.user = user;
 		this.video = video;
 	}
@@ -43,7 +43,7 @@ public class Vote {
 		return user;
 	}
 
-	public Video getVideo() {
+	public Movie getVideo() {
 		return video;
 	}
 

@@ -18,7 +18,7 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<mapping class="br.com.lino.votenofilme.domain.model.user.User" />
-		<mapping class="br.com.lino.votenofilme.domain.model.video.Video" />
+		<mapping class="br.com.lino.votenofilme.domain.model.movie.Movie" />
 		<mapping class="br.com.lino.votenofilme.domain.model.vote.Vote" />
 	</session-factory>
 
