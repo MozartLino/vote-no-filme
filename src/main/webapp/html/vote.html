@@ -1,0 +1,26 @@
+<h2>Escolha o melhor filme?</h2>
+<br />
+
+<div class="row-fluid marketing" id="comparison">
+
+	<div class="span6">
+		<img src="img/{{comparison.first.id}}.jpg" class="img-polaroid" ng-click="postVote(comparison.first)">
+		<h4>{{comparison.first.name}}</h4>
+		<p>{{comparison.first.sinopse}}</p>
+	</div>
+ 
+	<div class="span6">
+		<img src="img/{{comparison.second.id}}.jpg" class="img-polaroid" ng-click="postVote(comparison.second)">
+		<h4>{{comparison.second.name}}</h4>
+		<p>{{comparison.second.sinopse}}</p>
+	</div>
+</div>
+<br />
+
+<form class="form-signin hide" id="form">
+	<h2 class="form-signin-heading"></h2>
+	<input type="hidden" value="" ng-model="user.id"> 
+	<input type="text" class="input-block-level" placeholder="Nome" ng-model="user.name"> 
+	<input type="text" class="input-block-level" placeholder="Email" ng-model="user.email">
+	<button class="btn btn-large btn-block btn-primary" type="submit" ng-click="putUser(user)">Cadastrar</button>
+</form>

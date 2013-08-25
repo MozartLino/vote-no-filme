@@ -11,7 +11,7 @@ public class User {
 
 	@Id
 	@Column(name = "USER_ID", unique = true, nullable = false)
-	private String id;
+	private Long id;
 
 	@Column(name = "USER_NAME", length = 50)
 	private String name;
@@ -19,17 +19,19 @@ public class User {
 	@Column(name = "USER_EMAIL", unique = true, length = 40)
 	private String email;
 
-	public User(String id) {
+	protected User() {};
+
+	public User(Long id) {
 		this.id = id;
 	}
 
-	public User(String id, String name, String email) {
+	public User(Long id, String name, String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 

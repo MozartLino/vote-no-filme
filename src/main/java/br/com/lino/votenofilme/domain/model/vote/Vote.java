@@ -34,6 +34,8 @@ public class Vote {
 		this.user = user;
 		this.movie = video;
 	}
+	
+	protected Vote(){};
 
 	public Long getId() {
 		return id;

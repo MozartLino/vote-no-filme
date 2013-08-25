@@ -1,5 +1,5 @@
 angular.module('app', []).config(function($routeProvider) {
     $routeProvider.
-      when('/', {templateUrl:'vote.html'}).
+      when('/', {controller:VoteCtrl, templateUrl:'html/vote.html'}).
       otherwise({redirectTo:'/'});
   });

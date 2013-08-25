@@ -48,8 +48,8 @@ public class MovieDAOTest {
 
 		movieDAO = new MovieDAO(session);
 
-		user = new User("abcde-12345");
-		anotherUser = new User("fghij-67890");
+		user = new User(1L);
+		anotherUser = new User(2L);
 		matrix = new Movie("matrix", "genero1", "sinopse1");
 		theAvengers = new Movie("The Avengers", "genero2", "sinopse2");
 		ironMan = new Movie("Iron Man", "genero2", "sinopse2");

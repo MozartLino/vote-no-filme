@@ -1,6 +1,6 @@
 package br.com.lino.votenofilme.infrastructure.token;
 
-import java.util.UUID;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,13 +10,13 @@ import br.com.caelum.vraptor.ioc.Component;
 public class TokenManager {
 
 	private HttpServletRequest request;
-	private String token;
+	private Long token;
 
 	public TokenManager(HttpServletRequest request) {
 		this.request = request;
 	}
 
-	public String retrieveActualToken() {
+	public Long retrieveActualToken() {
 		if (thereIsNoTokenAvailable()) {
 			createNewToken();
 		}
@@ -25,12 +25,18 @@ public class TokenManager {
 	}
 
 	private void createNewToken() {
-		token = UUID.randomUUID().toString();
+		token = Calendar.getInstance().getTimeInMillis();
 	}
 
 	private boolean thereIsNoTokenAvailable() {
-		token = request.getParameter("token");
+		String parameter = request.getParameter("token");
 
-		return token == null;
+		if (request.getParameter("token") != null) {
+			token = Long.parseLong(parameter);
+
+			return false;
+		}
+
+		return true;
 	}
 }
