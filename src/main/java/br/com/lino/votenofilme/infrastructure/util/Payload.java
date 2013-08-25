@@ -13,11 +13,11 @@ public class Payload {
 
 	@Test
 	public void init() {
-		session.save(new Movie("Filme1", "Genero1", "Sinopse1"));
-		session.save(new Movie("Filme2", "Genero2", "Sinopse2"));
-		session.save(new Movie("Filme3", "Genero3", "Sinopse3"));
-		session.save(new Movie("Filme4", "Genero4", "Sinopse4"));
-		session.save(new Movie("Filme5", "Genero5", "Sinopse5"));
+		session.save(new Movie("O Homem de Aço", "Ação, Aventura", "A história de Superman"));
+		session.save(new Movie("Os Vingadores", "Ação, Aventura", "Em ‘Os Vingadores’, Homem de Ferro, Capitão América, Thor, Hulk, Gavião Arqueiro e Viúva Negra"));
+		session.save(new Movie("Batman: O Cavaleiro das Trevas Ressurge", "Ação, Aventura", "Oito anos depois, um novo líder terrorista, Bane, o melhor assola Gotham, eo Cavaleiro das Trevas ressurge para proteger uma cidade que tem marcado um inimigo."));
+		session.save(new Movie("Homem de Ferro 3", "Ação", "Desde o ataque dos chitauri a Nova York, Tony Stark teme não conseguir proteger sua namorada Pepper Potts dos vários inimigos que passou a ter após vestir a armadura do Homem de Ferro. Um deles, o Mandarim decide atacá-lo com força total, destruindo sua mansão e colocando a vida de Pepper em risco.."));
+		session.save(new Movie("Se Beber Não Case Parte 3", "Comédia", "Desta vez, não há casamento. Nem despedida de solteiro. Então, nada poderia dar errado, certo? Mas quando o Bando de Lobos cai na estrada, tudo pode acontecer."));
 	}
 
 	@Before

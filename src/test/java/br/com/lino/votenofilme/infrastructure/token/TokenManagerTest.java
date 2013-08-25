@@ -29,7 +29,7 @@ public class TokenManagerTest {
 		when(request.getParameter("token")).thenReturn(null);
 		String token = manager.retrieveActualToken();
 
-		assertFalse("N??o gerou novo token", isNullOrEmpty(token));
+		assertFalse("Não gerou novo token", isNullOrEmpty(token));
 	}
 
 	@Test
@@ -37,7 +37,7 @@ public class TokenManagerTest {
 		when(request.getParameter("token")).thenReturn("abcde-12345");
 		String token = manager.retrieveActualToken();
 
-		assertEquals("N??o utilizou o mesmo token", "abcde-12345", token);
+		assertEquals("Não utilizou o mesmo token", "abcde-12345", token);
 	}
 
 	private boolean isNullOrEmpty(String token) {

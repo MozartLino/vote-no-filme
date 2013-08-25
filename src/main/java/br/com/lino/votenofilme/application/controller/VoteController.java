@@ -31,8 +31,8 @@ public class VoteController {
 		this.token = tokenManager.retrieveActualToken();
 	}
 
-	@Get("/")
-	public void index() {
+	@Get("/movies")
+	public void list() {
 		users.save(new User(token));
 
 		result.include("movies", movies.list());

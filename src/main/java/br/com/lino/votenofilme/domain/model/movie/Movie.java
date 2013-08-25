@@ -20,10 +20,10 @@ public class Movie {
 	@Column(name = "MOVIE_NAME", nullable = false, length = 40)
 	private String name;
 
-	@Column(name = "MOVIE_GENERO", nullable = false, length = 40)
+	@Column(name = "MOVIE_GENERO", nullable = false, length = 20)
 	private String genero;
 
-	@Column(name = "MOVIE_SINOPSE", nullable = false, length = 40)
+	@Column(name = "MOVIE_SINOPSE", nullable = false, length = 500)
 	private String sinopse;
 
 	@Transient
