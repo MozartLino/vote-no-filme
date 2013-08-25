@@ -27,12 +27,12 @@ public class Vote {
 	private User user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "VIDEO_ID", nullable = false)
-	private Movie video;
+	@JoinColumn(name = "MOVIE_ID", nullable = false)
+	private Movie movie;
 
 	public Vote(User user, Movie video) {
 		this.user = user;
-		this.video = video;
+		this.movie = video;
 	}
 
 	public Long getId() {
@@ -44,12 +44,12 @@ public class Vote {
 	}
 
 	public Movie getVideo() {
-		return video;
+		return movie;
 	}
 
 	@Override
 	public String toString() {
-		return "Vote [id=" + id + ", user=" + user + ", video=" + video + "]";
+		return "Vote [id=" + id + ", user=" + user + ", video=" + movie + "]";
 	}
 
 }

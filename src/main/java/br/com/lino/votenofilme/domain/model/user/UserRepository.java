@@ -4,4 +4,6 @@ public interface UserRepository {
 
 	public void save(User user);
 
+	public void update(User user);
+
 }
