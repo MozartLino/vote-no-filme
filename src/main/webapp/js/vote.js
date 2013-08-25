@@ -14,35 +14,29 @@ function VoteCtrl($scope, $window, $http) {
 	}();
 
 	$scope.postVote = function(movie) {
-		var vote = $.extend({}, {
-			"user" : {
-				"id" : $scope.user.id
+		var vote = $.extend({}, {"user" : {"id" : $scope.user.id}},{"movie" : movie});
+
+		$http.post("votes", {"vote" : vote}).success(function(data) {
+			if ($scope.iterator.hasNext()) {
+				$scope.comparison = $scope.iterator.next();
+			} else {
+				$("#comparison").hide();
+				$("#form").show();
 			}
-		},{
-			"movie" : movie
 		});
-
-		$http.post("votes", {
-			"vote" : vote
-		}).success(function(data) {
-			console.log(data);
-		});
-
-		if ($scope.iterator.hasNext()) {
-			$scope.comparison = $scope.iterator.next();
-		} else {
-			$("#comparison").hide();
-			$("#form").show();
-		}
 	};
 
 	$scope.putUser = function(user) {
-		$http.put("users", {
-			"user" : $scope.user
-		}).success(function(data) {
+		$http.put("users", {"user" : $scope.user}).success(function(data) {
 			$scope.rankingByUser = data;
 			$("#form").hide();
 			$("#ranking").show();
+		}).error(function(data){
+			console.log(data);
+			$("#errors").html("");
+			$.each(data.errors, function(){
+				$("#errors").append(this.message + "<br />");
+			});
 		});
 
 		$http.get('ranking').success(function(data) {

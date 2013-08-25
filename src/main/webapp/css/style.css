@@ -33,3 +33,7 @@ img:hover {
 	margin-bottom: 15px;
 	padding: 7px 9px;
 }
+
+.errors {
+	color: #FF0000;
+}

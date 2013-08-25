@@ -16,12 +16,10 @@ public class User {
 	@Column(name = "USER_ID", unique = true, nullable = false)
 	private Long id;
 
-	@Length(max = 50, min = 10)
-	@Column(name = "USER_NAME", length = 50)
+	@Length(max = 50, min = 10, message = "{user.name.length}")
 	private String name;
 
-	@Email(message = "Email inválido")
-	@Column(name = "USER_EMAIL", unique = true, length = 40)
+	@Email(message = "{user.email}")
 	private String email;
 
 	public User(Long id) {

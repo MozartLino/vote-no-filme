@@ -10,6 +10,11 @@
 	</context-param>
 
 	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>messages</param-value>
+	</context-param>
+
+	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>
 		<param-value>br.com.caelum.vraptor.serialization.gson, br.com.caelum.vraptor.deserialization.gson</param-value>
 	</context-param>
