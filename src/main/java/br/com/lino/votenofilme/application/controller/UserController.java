@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.lino.votenofilme.domain.model.movie.MovieRepository;
 import br.com.lino.votenofilme.domain.model.user.User;
@@ -18,11 +19,13 @@ public class UserController {
 	private UserRepository users;
 	private MovieRepository movies;
 	private Long token;
+	private Validator validator;
 
-	public UserController(Result result, UserRepository users, MovieRepository movies, TokenManager tokenManager) {
+	public UserController(Result result, UserRepository users, MovieRepository movies, TokenManager tokenManager, Validator validator) {
 		this.result = result;
 		this.users = users;
 		this.movies = movies;
+		this.validator = validator;
 		this.token = tokenManager.retrieveActualToken();
 	}
 
@@ -40,8 +43,10 @@ public class UserController {
 	@Put("/users")
 	@Consumes("application/json")
 	public void update(User user) {
+		validator.validate(user);
+		validator.onErrorSendBadRequest();
+		
 		users.update(user);
-
 		result.use(Results.json()).withoutRoot().from(movies.rankingBy(user)).serialize();
 	}
 

@@ -1,26 +1,62 @@
-<h2>Escolha o melhor filme?</h2>
-<br />
+<div id="comparison">
+	<h2>Escolha o melhor filme?</h2>
+	<br />
+	<div class="row-fluid marketing">
 
-<div class="row-fluid marketing" id="comparison">
+		<div class="span6">
+			<img src="img/{{comparison.first.id}}.jpg" class="img-polaroid"
+				ng-click="postVote(comparison.first)" cursor=>
+			<h4>{{comparison.first.name}}</h4>
+			<p>{{comparison.first.sinopse}}</p>
+		</div>
 
-	<div class="span6">
-		<img src="img/{{comparison.first.id}}.jpg" class="img-polaroid" ng-click="postVote(comparison.first)">
-		<h4>{{comparison.first.name}}</h4>
-		<p>{{comparison.first.sinopse}}</p>
+		<div class="span6">
+			<img src="img/{{comparison.second.id}}.jpg" class="img-polaroid"
+				ng-click="postVote(comparison.second)">
+			<h4>{{comparison.second.name}}</h4>
+			<p>{{comparison.second.sinopse}}</p>
+		</div>
 	</div>
- 
-	<div class="span6">
-		<img src="img/{{comparison.second.id}}.jpg" class="img-polaroid" ng-click="postVote(comparison.second)">
-		<h4>{{comparison.second.name}}</h4>
-		<p>{{comparison.second.sinopse}}</p>
-	</div>
+	<br />
 </div>
-<br />
 
 <form class="form-signin hide" id="form">
 	<h2 class="form-signin-heading"></h2>
-	<input type="hidden" value="" ng-model="user.id"> 
-	<input type="text" class="input-block-level" placeholder="Nome" ng-model="user.name"> 
-	<input type="text" class="input-block-level" placeholder="Email" ng-model="user.email">
-	<button class="btn btn-large btn-block btn-primary" type="submit" ng-click="putUser(user)">Cadastrar</button>
+	<input type="hidden" value="" ng-model="user.id"> <input
+		type="text" class="input-block-level" placeholder="Nome"
+		ng-model="user.name"> <input type="text"
+		class="input-block-level" placeholder="Email" ng-model="user.email">
+	<button class="btn btn-large btn-block btn-primary" type="submit"
+		ng-click="putUser(user)">Cadastrar</button>
 </form>
+
+<div id="ranking" class="hide">
+	<h1>Seu Ranking</h1>
+	
+	<table class="table table-striped">
+		<tr ng-repeat="movie in rankingByUser">
+			<td>{{$index + 1}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.amountVotes}}</td>
+		</tr>
+	</table>
+
+	<br />
+	<h1>Ranking Geral</h1>
+	<table class="table table-striped">
+		<tr ng-repeat="movie in ranking">
+			<td>{{$index + 1}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.amountVotes}}</td>
+		</tr>
+
+	</table>
+
+</div>
+
+<style type="text/css">
+img:hover {
+  cursor:pointer;
+  opacity: 0.65;
+ }
+</style>

@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 @Table(name = "USER")
 public class User {
@@ -13,13 +16,13 @@ public class User {
 	@Column(name = "USER_ID", unique = true, nullable = false)
 	private Long id;
 
+	@Length(max = 50, min = 10)
 	@Column(name = "USER_NAME", length = 50)
 	private String name;
 
+	@Email(message = "Email inválido")
 	@Column(name = "USER_EMAIL", unique = true, length = 40)
 	private String email;
-
-	protected User() {};
 
 	public User(Long id) {
 		this.id = id;
