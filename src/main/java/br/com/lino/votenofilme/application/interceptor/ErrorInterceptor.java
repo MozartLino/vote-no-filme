@@ -25,7 +25,6 @@ public class ErrorInterceptor implements Interceptor {
 		this.validator = validator;
 	}
 
-	@Override
 	public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance) throws InterceptionException {
 		try {
 			stack.next(method, resourceInstance);
@@ -36,7 +35,6 @@ public class ErrorInterceptor implements Interceptor {
 		}
 	}
 
-	@Override
 	public boolean accepts(ResourceMethod method) {
 		return !request.getHeader("accept").contains("application/json");
 	}

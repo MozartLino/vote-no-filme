@@ -15,7 +15,6 @@ public class VoteDAO implements VoteRepository {
 		this.session = session;
 	}
 
-	@Override
 	public void save(Vote vote) {
 		session.save(vote);
 	}

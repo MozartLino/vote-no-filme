@@ -24,18 +24,15 @@ public class MovieDAO implements MovieRepository {
 		this.session = session;
 	}
 
-	@Override
 	@SuppressWarnings("unchecked")
 	public List<Movie> list() {
 		return session.createCriteria(Movie.class).list();
 	}
 
-	@Override
 	public List<Movie> rankingBy(User user) {
 		return ranking(user);
 	}
 
-	@Override
 	public List<Movie> ranking() {
 		return ranking(null);
 	}
@@ -64,7 +61,7 @@ public class MovieDAO implements MovieRepository {
 
 	private List<Movie> sort(List<Movie> movies) {
 		Collections.sort(movies, new Comparator<Movie>() {
-			@Override
+
 			public int compare(Movie movie1, Movie movie2) {
 				return movie2.getAmountVotes() - movie1.getAmountVotes();
 			}

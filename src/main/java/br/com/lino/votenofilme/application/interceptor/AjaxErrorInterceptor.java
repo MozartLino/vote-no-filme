@@ -12,7 +12,7 @@ import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 import br.com.caelum.vraptor.view.Results;
 
-@Intercepts(after={})
+@Intercepts(after = {})
 public class AjaxErrorInterceptor implements Interceptor {
 
 	private Logger logger = Logger.getLogger(AjaxErrorInterceptor.class);
@@ -24,7 +24,6 @@ public class AjaxErrorInterceptor implements Interceptor {
 		this.result = result;
 	}
 
-	@Override
 	public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance) throws InterceptionException {
 		try {
 			stack.next(method, resourceInstance);
@@ -34,7 +33,6 @@ public class AjaxErrorInterceptor implements Interceptor {
 		}
 	}
 
-	@Override
 	public boolean accepts(ResourceMethod method) {
 		return request.getHeader("accept").contains("application/json");
 	}

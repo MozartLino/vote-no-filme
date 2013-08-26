@@ -15,12 +15,10 @@ public class UserDAO implements UserRepository {
 		this.session = session;
 	}
 
-	@Override
 	public void save(User user) {
 		session.save(user);
 	}
 
-	@Override
 	public void update(User user) {
 		session.update(user);
 	}
