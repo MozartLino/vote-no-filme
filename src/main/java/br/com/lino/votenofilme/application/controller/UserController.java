@@ -50,4 +50,7 @@ public class UserController {
 		result.use(Results.json()).withoutRoot().from(movies.rankingBy(user)).serialize();
 	}
 
+	public void error() {
+	}
+
 }
