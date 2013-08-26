@@ -26,19 +26,29 @@ public class MovieDAOTest {
 
 	@Test
 	public void shouldOrderMoviesByVotes() {
+		session.save(createMovie(user, ironMan)); // matrix x ironMan
+		session.save(createMovie(user, theAvengers)); // matrix x theAvengers
+		session.save(createMovie(user, theAvengers)); // theAvengers x ironMan
 		List<Movie> movies = movieDAO.ranking();
 
 		assertEquals("Filme The Avengers deveria ser o primeiro da lista", theAvengers, movies.get(0));
 		assertEquals("Filme Matrix deveria ser o último da lista", 2, movies.lastIndexOf(matrix));
 	}
-	
 
 	@Test
 	public void shouldOrderMoviesByVotesWithUser() {
+		session.save(createMovie(anotherUser, matrix)); // matrix x ironMan
+		session.save(createMovie(anotherUser, matrix)); // matrix x theAvengers
+		session.save(createMovie(anotherUser, ironMan)); // theAvengers x
+															// ironMan
 		List<Movie> movies = movieDAO.rankingBy(anotherUser);
 
 		assertEquals("Filme Matrix deveria ser o primeiro da lista", matrix, movies.get(0));
 		assertEquals("Filme The Avengers deveria ser o último da lista", 2, movies.lastIndexOf(theAvengers));
+	}
+
+	private Vote createMovie(User user, Movie movie) {
+		return new Vote(user, movie);
 	}
 
 	@Before
@@ -59,14 +69,6 @@ public class MovieDAOTest {
 		session.save(matrix);
 		session.save(ironMan);
 		session.save(theAvengers);
-		
-		session.save(new Vote(user, ironMan)); // matrix x ironMan
-		session.save(new Vote(user, theAvengers)); // matrix x theAvengers
-		session.save(new Vote(user, theAvengers)); // theAvengers x ironMan
-		
-		session.save(new Vote(anotherUser, matrix)); // matrix x ironMan
-		session.save(new Vote(anotherUser, matrix)); // matrix x theAvengers
-		session.save(new Vote(anotherUser, ironMan)); // theAvengers x ironMan
 	}
 
 	@After
