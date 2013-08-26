@@ -37,3 +37,8 @@ img:hover {
 .errors {
 	color: #FF0000;
 }
+
+#comparison img:hover {
+  cursor:pointer;
+  opacity: 0.65;
+ }
