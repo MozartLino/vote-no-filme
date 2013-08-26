@@ -14,7 +14,10 @@ function VoteCtrl($scope, $window, $http) {
 	}();
 
 	$scope.postVote = function(movie) {
-		var vote = $.extend({}, {"user" : {"id" : $scope.user.id}},{"movie" : movie});
+		var vote =  {
+				"user" : {"id" : $scope.user.id},
+				"movie" : movie
+			};
 
 		$http.post("votes", {"vote" : vote}).success(function(data) {
 			if ($scope.iterator.hasNext()) {
@@ -32,8 +35,7 @@ function VoteCtrl($scope, $window, $http) {
 			$("#form").hide();
 			$("#ranking").show();
 		}).error(function(data){
-			console.log(data);
-			$("#errors").html("");
+			$("#errors").empty();
 			$.each(data.errors, function(){
 				$("#errors").append(this.message + "<br />");
 			});

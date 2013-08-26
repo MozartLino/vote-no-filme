@@ -7,7 +7,7 @@
 
 	<session-factory>
 		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="connection.url">jdbc:hsqldb:mem:teste</property>
+		<property name="connection.url">jdbc:hsqldb:hsql://localhost</property>
 		<property name="connection.username">sa</property>
 		<property name="connection.password"></property>
 		<property name="connection.pool_size">1</property>
@@ -15,7 +15,7 @@
 		<property name="current_session_context_class">thread</property>
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 
 		<mapping class="br.com.lino.votenofilme.domain.model.user.User" />
 		<mapping class="br.com.lino.votenofilme.domain.model.movie.Movie" />
