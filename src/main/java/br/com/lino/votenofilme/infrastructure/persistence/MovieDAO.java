@@ -44,7 +44,7 @@ public class MovieDAO implements MovieRepository {
 			movie.setAmountVotes(countVote(user, movie));
 		}
 
-		return sort(movies);
+		return sortByVotes(movies);
 	}
 
 	private int countVote(User user, Movie movie) {
@@ -59,7 +59,7 @@ public class MovieDAO implements MovieRepository {
 		return count.intValue();
 	}
 
-	private List<Movie> sort(List<Movie> movies) {
+	private List<Movie> sortByVotes(List<Movie> movies) {
 		Collections.sort(movies, new Comparator<Movie>() {
 
 			public int compare(Movie movie1, Movie movie2) {
