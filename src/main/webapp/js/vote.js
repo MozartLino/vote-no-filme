@@ -2,10 +2,7 @@ function VoteCtrl($scope, $window, $http) {
 	var $ = jQuery;
 
 	init = function() {
-		$http.get('users/token').success(function(data) {
-			$scope.user = {};
-			$scope.user.id = data;
-		});
+		$scope.votes = [];
 
 		$http.get('movies').success(function(data) {
 			$scope.iterator = new Iterator(createComparisons(data));
@@ -13,85 +10,34 @@ function VoteCtrl($scope, $window, $http) {
 		});
 	}();
 
-	$scope.postVote = function(movie) {
-		var vote =  {
-				"user" : {"id" : $scope.user.id},
-				"movie" : movie
-			};
+	$scope.addVote = function(movie) {
+		$scope.votes.push({movie : movie });	
 
-		$http.post("votes", {"vote" : vote}).success(function(data) {
-			if ($scope.iterator.hasNext()) {
-				$scope.comparison = $scope.iterator.next();
-			} else {
-				$("#comparison").hide();
-				$("#form").show();
-			}
-		});
+		if ($scope.iterator.hasNext()) {
+			$scope.comparison = $scope.iterator.next();
+		} else {
+			$scope.selection = "form";
+		}	
 	};
 
-	$scope.putUser = function(user) {
-		$http.put("users", {"user" : $scope.user}).success(function(data) {
-			$scope.rankingByUser = data;
-			$("#form").hide();
-			$("#ranking").show();
-		}).error(function(data){
+	$scope.postUser = function(user) {
+
+		var userVotes = {
+			"user": user,
+			"votes" : $scope.votes
+		};
+
+		$http.post("users", {"userVotes" : userVotes})
+		.success(function(data) {
+			$scope.selection = "ranking";
+			$scope.rankingByUser = data.rankingByUser;
+			$scope.ranking = data.ranking;
+		})
+		.error(function(data) {
 			$("#errors").empty();
-			$.each(data.errors, function(){
+			$.each(data.errors, function() {
 				$("#errors").append(this.message + "<br />");
 			});
 		});
-
-		$http.get('ranking').success(function(data) {
-			$scope.ranking = data;
-		});
 	};
-
 }
-
-function createComparisons(movies) {
-	var comparisons = [];
-	var length = movies.length - 1;
-
-	while (length > 0) {
-		for ( var i = 0; i < length; i++) {
-			var comparison = new Object();
-			comparison.first = movies[length];
-			comparison.second = movies[i];
-
-			comparisons.push(comparison);
-		}
-		length--;
-	}
-
-	shuffle(comparisons);
-
-	return comparisons;
-}
-
-function shuffle(comparisons) {
-	var i = comparisons.length, j, tempi, tempj;
-	if (i == 0)
-		return comparisons;
-	while (--i) {
-		j = Math.floor(Math.random() * (i + 1));
-		tempi = comparisons[i];
-		tempj = comparisons[j];
-		comparisons[i] = tempj;
-		comparisons[j] = tempi;
-	}
-}
-
-function Iterator(comparisons) {
-	var index = 0, data = comparisons;
-
-	return {
-		next : function() {
-			var element = data[index];
-			index += 1;
-			return element;
-		},
-		hasNext : function() {
-			return index < data.length;
-		}
-	};
-};

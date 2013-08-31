@@ -1,0 +1,22 @@
+<div id="ranking" class="hide" ng-controller="VoteCtrl">
+	<h1>Seu Ranking</h1>
+	
+	<table class="table table-striped">
+		<tr ng-repeat="movie in rankingByUser">
+			<td>{{$index + 1}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.amountVotes}}</td>
+		</tr>
+	</table>
+
+	<br />
+	<h1>Ranking Geral</h1>
+	<table class="table table-striped">
+		<tr ng-repeat="movie in ranking">
+			<td>{{$index + 1}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.amountVotes}}</td>
+		</tr>
+	</table>
+
+</div>
