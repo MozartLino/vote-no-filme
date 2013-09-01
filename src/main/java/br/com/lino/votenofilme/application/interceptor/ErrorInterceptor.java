@@ -36,7 +36,7 @@ public class ErrorInterceptor implements Interceptor {
 	}
 
 	public boolean accepts(ResourceMethod method) {
-		return !request.getHeader("accept").contains("application/json");
+		return false;//!request.getHeader("accept").contains("application/json");
 	}
 
 }

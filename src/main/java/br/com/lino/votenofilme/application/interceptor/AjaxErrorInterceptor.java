@@ -29,12 +29,12 @@ public class AjaxErrorInterceptor implements Interceptor {
 			stack.next(method, resourceInstance);
 		} catch (Exception e) {
 			logger.error(e);
-			result.use(Results.http()).body("Ocorreu um erro na aplicação");
+			result.use(Results.http()).body("Ocorreu um erro na aplica����o");
 		}
 	}
 
 	public boolean accepts(ResourceMethod method) {
-		return request.getHeader("accept").contains("application/json");
+		return false;//request.getHeader("accept").contains("application/json");
 	}
 
 }

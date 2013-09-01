@@ -26,6 +26,7 @@ public class MovieDAO implements MovieRepository {
 
 	@SuppressWarnings("unchecked")
 	public List<Movie> list() {
+		session.clear();
 		return session.createCriteria(Movie.class).list();
 	}
 

@@ -34,8 +34,12 @@ public class Vote {
 		this.user = user;
 		this.movie = video;
 	}
-	
-	protected Vote(){};
+
+	public Vote(Movie video) {
+		this.movie = video;
+	}
+
+	protected Vote() {};
 
 	public Long getId() {
 		return id;
@@ -43,6 +47,10 @@ public class Vote {
 
 	public User getUser() {
 		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Movie getVideo() {

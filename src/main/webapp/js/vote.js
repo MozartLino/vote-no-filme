@@ -11,7 +11,7 @@ function VoteCtrl($scope, $window, $http) {
 	}();
 
 	$scope.addVote = function(movie) {
-		$scope.votes.push({movie : movie });	
+		$scope.votes.push({"movie" : movie });	
 
 		if ($scope.iterator.hasNext()) {
 			$scope.comparison = $scope.iterator.next();
@@ -21,7 +21,6 @@ function VoteCtrl($scope, $window, $http) {
 	};
 
 	$scope.postUser = function(user) {
-
 		var userVotes = {
 			"user": user,
 			"votes" : $scope.votes
