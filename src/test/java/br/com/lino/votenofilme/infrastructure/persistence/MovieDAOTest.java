@@ -32,7 +32,7 @@ public class MovieDAOTest {
 		List<Movie> movies = movieDAO.ranking();
 
 		assertEquals("Filme The Avengers deveria ser o primeiro da lista", theAvengers, movies.get(0));
-		assertEquals("Filme Matrix deveria ser o ��ltimo da lista", 2, movies.lastIndexOf(matrix));
+		assertEquals("Filme Matrix deveria ser o último da lista", 2, movies.lastIndexOf(matrix));
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class MovieDAOTest {
 		List<Movie> movies = movieDAO.rankingBy(anotherUser);
 
 		assertEquals("Filme Matrix deveria ser o primeiro da lista", matrix, movies.get(0));
-		assertEquals("Filme The Avengers deveria ser o ��ltimo da lista", 2, movies.lastIndexOf(theAvengers));
+		assertEquals("Filme The Avengers deveria ser o último da lista", 2, movies.lastIndexOf(theAvengers));
 	}
 
 	private Vote createVote(User user, Movie movie) {
