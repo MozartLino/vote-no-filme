@@ -13,12 +13,11 @@
 <body>
 
 	<div class="container" ng-controller="VoteCtrl">
-	
 		<div class="animate-switch-container" ng-switch on="selection">
-          <div ng-switch-when="form" ng-include="'html/form.html'"></div>
-          <div ng-switch-when="ranking" ng-include="'html/ranking.html'"></div>
-          <div ng-switch-default ng-include="'html/vote.html'" compile="html"></div>
-      </div>
+          		<div ng-switch-when="form" ng-include="'html/form.html'"></div>
+          		<div ng-switch-when="ranking" ng-include="'html/ranking.html'"></div>
+        		<div ng-switch-default ng-include="'html/vote.html'" compile="html"></div>
+      		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
